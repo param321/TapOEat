@@ -1,3 +1,3 @@
 # Food-Ordering-App
-CSEA Project &nsbp; 
+CSEA Project <br/>
 Install the requirements before running the app
