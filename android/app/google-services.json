@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "984697872157",
+    "firebase_url": "https://tapoeat.firebaseio.com",
+    "project_id": "tapoeat",
+    "storage_bucket": "tapoeat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:984697872157:android:f887141ab4095e0c298bf4",
+        "android_client_info": {
+          "package_name": "com.tapoeat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "984697872157-q888a7e6ui8vb4v6rp0lq1ge98nvutb7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAh0t1GAdVYxUm_w21klLtMCus5tkV2c1Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "984697872157-q888a7e6ui8vb4v6rp0lq1ge98nvutb7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

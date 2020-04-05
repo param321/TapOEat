@@ -9,3 +9,5 @@ npm install react-native-reanimated react-native-gesture-handler react-native-sc
 npm install @react-navigation/native @react-navigation/stack
 npm install react-navigation-stack
 npm install react-navigation
+npm install --save firebase
+npm install --save @react-native-firebase/app
