@@ -1,21 +1,20 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { createStackNavigator, createAppContainer } from "react-navigation";
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack'
+import Home from '../Screens/Home/home';
+import Login from '../Screens/Auth/login';
 
-import { home } from '../Screens/Home/home';
-import { login } from '../Screens/Auth/login';
-
-export const Navigator=props=>(
+export const Navigator=()=>(
     <AppContainer/>
 );
 
 const AppNavigator = createStackNavigator({
-    Home: {
-        screen: home
-    },
     Login: {
-        screen: login
+        screen: Login
+    },
+    Home: {
+        screen: Home
     }
 });
 
-export const AppContainer = createAppContainer(AppNavigator);
+const AppContainer = createAppContainer(AppNavigator);
