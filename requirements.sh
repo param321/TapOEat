@@ -11,3 +11,6 @@ sudo npm install react-navigation-stack
 sudo npm install react-navigation
 sudo npm install --save firebase
 sudo npm install --save @react-native-firebase/app
+sudo npm install react-navigation --save
+sudo npm yarn react-native-gesture-handler
+sudo react-native link

@@ -12,12 +12,10 @@ export default class SignUp extends React.Component {
     }
     render() {
         return (
-   // <ImageBackground source={require('../../solid-orange-background.jpg')} 
-   //    style={{ width: '100%', height: '100%' }}>
     <View style={styles.container}>
        <View style={styles.headingSection}>
           <Image source={require('../../login_background.jpeg')} 
-           style={{   width: 300, height: 300 }} /> 
+           style={{   width: 200, height: 200 }} /> 
        </View>
        <Text style={styles.heading}>Sign Up</Text>
         {this.state.errorMessage &&
@@ -55,7 +53,7 @@ export default class SignUp extends React.Component {
 const heightConst = Dimensions.get('screen').height;
 const styles = StyleSheet.create({
     container: {
-        height: heightConst - 50,
+        height: heightConst - 250,
         justifyContent: 'center',
         alignItems: 'center'
     },
@@ -63,7 +61,7 @@ const styles = StyleSheet.create({
         borderColor: 1,
         textAlign: 'center',
         alignItems: 'center',
-        marginBottom: 100
+        marginBottom: 10
     },
     heading: {
         color: '#0384fc',
