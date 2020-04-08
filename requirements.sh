@@ -10,7 +10,10 @@ sudo npm install @react-navigation/native @react-navigation/stack
 sudo npm install react-navigation-stack
 sudo npm install react-navigation
 sudo npm install --save firebase
-sudo npm install --save @react-native-firebase/app
 sudo npm install react-navigation --save
 sudo npm yarn react-native-gesture-handler
 sudo react-native link
+sudo npm i @ui-kitten/components @eva-design/eva react-native-svg
+sudo npm install --save @react-native-firebase/auth
+sudo npm install --save @react-native-firebase/app
+sudo npm install --save @react-native-firebase/firestore
