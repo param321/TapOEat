@@ -20,7 +20,7 @@ export default class SignUp extends React.Component {
         }
     }
     async createuser() {
-        var user = firebaseAuth.currentUser;
+        let user = firebaseAuth.currentUser;
         if (user) {
             console.log("Yayy");
             var dbuser = firestore().collection("users").doc(user.uid).set({

@@ -17,3 +17,5 @@ sudo npm i @ui-kitten/components @eva-design/eva react-native-svg
 sudo npm install --save @react-native-firebase/auth
 sudo npm install --save @react-native-firebase/app
 sudo npm install --save @react-native-firebase/firestore
+sudo npm install -save react-navigation
+sudo npm install -save react-native-vector-icons
