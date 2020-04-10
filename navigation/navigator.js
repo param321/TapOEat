@@ -1,9 +1,8 @@
-import * as React from 'react';
-import { Button, View } from 'react-native';
-// import { createAppContainer } from 'react-navigation';
-// import { createSwitchNavigator } from 'react-navigation';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import { NavigationContainer } from '@react-navigation/native';
+import React, { Component } from 'react';
+import { View, Image, TouchableOpacity } from 'react-native';
+import { createAppContainer } from 'react-navigation';
+import { createDrawerNavigator } from 'react-navigation-drawer';
+import { createStackNavigator } from 'react-navigation-stack';
 import Home from '../Screens/Home/home';
 import Login from '../Screens/Auth/login';
 import SignUp from '../Screens/Auth/Signup';
@@ -11,46 +10,98 @@ import Loading from '../Screens/Loading';
 import Main from '../Screens/Main';
 
 export const Navigator = () => (
-  <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Home">
-        <Drawer.Screen name="Home" component={Login} />
-        <Drawer.Screen name="Notifications" component={SignUp} />
-      </Drawer.Navigator>
-    </NavigationContainer>
+  <AppContainer />
 );
-// const SwitchNavigator = createSwitchNavigator(
-//   {
-//     Loading: Loading,
-//     Login: Login,
-//     SignUp: SignUp,
-//     Main: Main,
-//     Home: Home
-//   },
-//   {
-//     initialRouteName: 'Loading',
-//     headerMode: 'none'
-//   }
-// )
 
-// const AppContainer = createAppContainer(SwitchNavigator);
+class NavigationDrawerStructure extends React.Component{
+  //Structure for the navigatin Drawer
+  toggleDrawer = () => {
+    //Props to open/close the drawer
+    this.props.navigationProps.toggleDrawer();
+  };
+  render() {
+    return (
+      <View style={{ flexDirection: 'row' }}>
+        <TouchableOpacity onPress={() => { this.toggleDrawer() }}>
+          {/*Donute Button Image */}
+          <Image
+            source={require('../image/drawer.png')}
+            style={{ width: 25, height: 25, marginLeft: 5 }}
+          />
+        </TouchableOpacity>
+      </View>
+    );
+  }
+}
 
-// function HomeScreen({ navigation }) {
-//   return (
-//     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-//       <Button
-//         onPress={() => navigation.navigate('Login')}
-//         title="Go to notifications"
-//       />
-//     </View>
-//   );
-// }
+const FirstActivity_StackNavigator = createStackNavigator({
+  //All the screen from the Screen1 will be indexed here
+  First: {
+    screen: Login,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Demo Screen 1',
+      headerLeft: () => (<NavigationDrawerStructure navigationProps={navigation} />),
+      headerStyle: {
+        backgroundColor: '#FF9800',
+      },
+      headerTintColor: '#fff',
+    }),
+  },
+});
 
-// function NotificationsScreen({ navigation }) {
-//   return (
-//     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-//       <Button onPress={() => navigation.goBack()} title="Go back home" />
-//     </View>
-//   );
-// }
+const Screen2_StackNavigator = createStackNavigator({
+  //All the screen from the Screen2 will be indexed here
+  Second: {
+    screen: SignUp,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Demo Screen 2',
+      headerLeft: () => (<NavigationDrawerStructure navigationProps={navigation} />),
+      headerStyle: {
+        backgroundColor: '#FF9800',
+      },
+      headerTintColor: '#fff',
+    }),
+  },
+});
 
-// const Drawer = createDrawerNavigator();
+const Screen3_StackNavigator = createStackNavigator({
+  //All the screen from the Screen3 will be indexed here
+  Third: {
+    screen: Home,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Demo Screen 3',
+      headerLeft: () => (<NavigationDrawerStructure navigationProps={navigation} />),
+      headerStyle: {
+        backgroundColor: '#FF9800',
+      },
+      headerTintColor: '#fff',
+    }),
+  },
+});
+
+const DrawerNavigatorExample = createDrawerNavigator({
+  //Drawer Optons and indexing
+  Screen1: {
+    //Title
+    screen: FirstActivity_StackNavigator,
+    navigationOptions: {
+      drawerLabel: 'Dem Screen 1',
+    },
+  },
+  Screen2: {
+    //Title
+    screen: Screen2_StackNavigator,
+    navigationOptions: {
+      drawerLabel: 'Dem Screen 2',
+    },
+  },
+  Screen3: {
+    //Title
+    screen: Screen3_StackNavigator,
+    navigationOptions: {
+      drawerLabel: 'Dem Screen 3',
+    },
+  },
+});
+
+const AppContainer = createAppContainer(DrawerNavigatorExample);

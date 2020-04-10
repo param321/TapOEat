@@ -4,9 +4,8 @@ import {Text, View, Button } from 'react-native';
 export default class Home extends Component{
   render() {
     return (
-      <View>
-        <Text>Hello Mr.XXX</Text>
-        <Button title="Sign Out" onPress={()=>this.props.navigation.navigate('Login')}/>
+      <View style={{marginHorizontal:150,marginVertical:150}}>
+        <Text>Home Here</Text>
       </View>
     );
   }
