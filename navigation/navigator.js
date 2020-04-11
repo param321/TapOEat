@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import { View, Image, TouchableOpacity } from 'react-native';
-import { createAppContainer } from 'react-navigation';
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createStackNavigator } from 'react-navigation-stack';
 import Home from '../Screens/Home/home';
+import Contact from '../Screens/Contacts Us/contact';
 import Login from '../Screens/Auth/login';
 import SignUp from '../Screens/Auth/Signup';
 import Loading from '../Screens/Loading';
-import Main from '../Screens/Main';
 
 export const Navigator = () => (
   <AppContainer />
 );
 
-class NavigationDrawerStructure extends React.Component{
+class NavigationDrawerStructure extends React.Component {
   //Structure for the navigatin Drawer
   toggleDrawer = () => {
     //Props to open/close the drawer
@@ -34,42 +34,12 @@ class NavigationDrawerStructure extends React.Component{
   }
 }
 
-const FirstActivity_StackNavigator = createStackNavigator({
+const FirstDrawerNav = createStackNavigator({
   //All the screen from the Screen1 will be indexed here
   First: {
-    screen: Login,
-    navigationOptions: ({ navigation }) => ({
-      title: 'Demo Screen 1',
-      headerLeft: () => (<NavigationDrawerStructure navigationProps={navigation} />),
-      headerStyle: {
-        backgroundColor: '#FF9800',
-      },
-      headerTintColor: '#fff',
-    }),
-  },
-});
-
-const Screen2_StackNavigator = createStackNavigator({
-  //All the screen from the Screen2 will be indexed here
-  Second: {
-    screen: SignUp,
-    navigationOptions: ({ navigation }) => ({
-      title: 'Demo Screen 2',
-      headerLeft: () => (<NavigationDrawerStructure navigationProps={navigation} />),
-      headerStyle: {
-        backgroundColor: '#FF9800',
-      },
-      headerTintColor: '#fff',
-    }),
-  },
-});
-
-const Screen3_StackNavigator = createStackNavigator({
-  //All the screen from the Screen3 will be indexed here
-  Third: {
     screen: Home,
     navigationOptions: ({ navigation }) => ({
-      title: 'Demo Screen 3',
+      title: 'Home',
       headerLeft: () => (<NavigationDrawerStructure navigationProps={navigation} />),
       headerStyle: {
         backgroundColor: '#FF9800',
@@ -79,29 +49,49 @@ const Screen3_StackNavigator = createStackNavigator({
   },
 });
 
-const DrawerNavigatorExample = createDrawerNavigator({
+const SecondDrawerNav = createStackNavigator({
+  //All the screen from the Screen2 will be indexed here
+  Second: {
+    screen: Contact,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Contact Us',
+      headerLeft: () => (<NavigationDrawerStructure navigationProps={navigation} />),
+      headerStyle: {
+        backgroundColor: '#FF9800',
+      },
+      headerTintColor: '#fff',
+    }),
+  },
+});
+
+const AuthStack = createStackNavigator({ LoginPage: Login, SignUpPage: SignUp });
+
+const DrawerNavigator = createDrawerNavigator({
   //Drawer Optons and indexing
   Screen1: {
     //Title
-    screen: FirstActivity_StackNavigator,
+    screen: FirstDrawerNav,
     navigationOptions: {
-      drawerLabel: 'Dem Screen 1',
+      drawerLabel: 'Home :)',
     },
   },
   Screen2: {
     //Title
-    screen: Screen2_StackNavigator,
+    screen: SecondDrawerNav,
     navigationOptions: {
-      drawerLabel: 'Dem Screen 2',
-    },
-  },
-  Screen3: {
-    //Title
-    screen: Screen3_StackNavigator,
-    navigationOptions: {
-      drawerLabel: 'Dem Screen 3',
+      drawerLabel: 'Contact Us :)',
     },
   },
 });
 
-const AppContainer = createAppContainer(DrawerNavigatorExample);
+const AppContainer = createAppContainer(
+  createSwitchNavigator({
+      //AuthLoading: AuthLoadingScreen,
+      App: DrawerNavigator,
+      Auth: AuthStack,
+    },
+{
+      initialRouteName: 'Auth',
+    }
+  )
+);

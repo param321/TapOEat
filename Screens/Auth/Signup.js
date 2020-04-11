@@ -28,7 +28,7 @@ export default class SignUp extends React.Component {
                 email: this.state.email,
                 contact: this.state.number,
             });
-            this.props.navigation.navigate('Main');
+            this.props.navigation.navigate('App');
         }else {
             console.log("not signed in");
             setInterval(() => {
@@ -92,7 +92,7 @@ export default class SignUp extends React.Component {
                 </TouchableOpacity>
                 <Button color="#0384fc"
                     title="Already have an account?"
-                    onPress={() => this.props.navigation.navigate('Login')}
+                    onPress={() => this.props.navigation.navigate('LoginPage')}
                 />
             </View>
         )

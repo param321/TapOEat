@@ -6,7 +6,7 @@ export default class Login extends React.Component {
     state = { email: '', password: '', errorMessage: null }
     handleLogin = () => {
         console.log('handleLogin')
-        firebaseAuth.signInWithEmailAndPassword(this.state.email, this.state.password).then(() => this.props.navigation.navigate('Main'))
+        firebaseAuth.signInWithEmailAndPassword(this.state.email, this.state.password).then(() => this.props.navigation.navigate('App'))
             .catch(error => this.setState({ errorMessage: error.message }));
     }
     render() {
@@ -41,7 +41,7 @@ export default class Login extends React.Component {
                 </TouchableOpacity>
                 <Button
                     title="Don't have an account?" color="#0384fc"
-                    onPress={() => this.props.navigation.navigate('SignUp')}
+                    onPress={() => {this.props.navigation.navigate('SignUpPage'),console.log('Yayy')}}
                 />
             </View>
         )
