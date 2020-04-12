@@ -7,7 +7,9 @@ import Home from '../Screens/Home/home';
 import Contact from '../Screens/Contacts Us/contact';
 import Login from '../Screens/Auth/login';
 import SignUp from '../Screens/Auth/Signup';
-import Loading from '../Screens/Loading';
+import Loading from '../Screens/Auth/Loading';
+import Account from '../Screens/Account/account';
+import Order from '../Screens/Orders/orders'
 
 export const Navigator = () => (
   <AppContainer />
@@ -64,7 +66,39 @@ const SecondDrawerNav = createStackNavigator({
   },
 });
 
+const ThirdDrawerNav = createStackNavigator({
+  //All the screen from the Screen2 will be indexed here
+  Third: {
+    screen: Order,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Orders',
+      headerLeft: () => (<NavigationDrawerStructure navigationProps={navigation} />),
+      headerStyle: {
+        backgroundColor: '#FF9800',
+      },
+      headerTintColor: '#fff',
+    }),
+  },
+});
+
+const FourthDrawerNav = createStackNavigator({
+  //All the screen from the Screen2 will be indexed here
+  Fourth: {
+    screen: Account,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Account',
+      headerLeft: () => (<NavigationDrawerStructure navigationProps={navigation} />),
+      headerStyle: {
+        backgroundColor: '#FF9800',
+      },
+      headerTintColor: '#fff',
+    }),
+  },
+});
+
 const AuthStack = createStackNavigator({ LoginPage: Login, SignUpPage: SignUp });
+
+const AuthLoadingScreen = createStackNavigator({LoadingPage:Loading});
 
 const DrawerNavigator = createDrawerNavigator({
   //Drawer Optons and indexing
@@ -77,6 +111,20 @@ const DrawerNavigator = createDrawerNavigator({
   },
   Screen2: {
     //Title
+    screen: ThirdDrawerNav,
+    navigationOptions: {
+      drawerLabel: 'Orders :)',
+    },
+  },
+  Screen3: {
+    //Title
+    screen: FourthDrawerNav,
+    navigationOptions: {
+      drawerLabel: 'Account :)',
+    },
+  },
+  Screen4: {
+    //Title
     screen: SecondDrawerNav,
     navigationOptions: {
       drawerLabel: 'Contact Us :)',
@@ -86,12 +134,12 @@ const DrawerNavigator = createDrawerNavigator({
 
 const AppContainer = createAppContainer(
   createSwitchNavigator({
-      //AuthLoading: AuthLoadingScreen,
+      AuthLoading: AuthLoadingScreen,
       App: DrawerNavigator,
       Auth: AuthStack,
     },
-{
-      initialRouteName: 'Auth',
+    {
+      initialRouteName: 'AuthLoading',
     }
   )
 );
