@@ -9,8 +9,8 @@ import Login from '../Screens/Auth/login';
 import SignUp from '../Screens/Auth/Signup';
 import Loading from '../Screens/Auth/Loading';
 import Account from '../Screens/Account/account';
-import Order from '../Screens/Orders/orders'
-
+import Order from '../Screens/Orders/orders';
+import locationScreen from '../Screens/location';
 export const Navigator = () => (
   <AppContainer />
 );
@@ -96,6 +96,22 @@ const FourthDrawerNav = createStackNavigator({
   },
 });
 
+const FifthDrawerNav = createStackNavigator({
+  //All the screen from the Screen2 will be indexed here
+  Fifth: {
+    screen: locationScreen,
+    navigationOptions: ({ navigation }) => ({
+      title: 'locationScreen',
+      headerLeft: () => (<NavigationDrawerStructure navigationProps={navigation} />),
+      headerStyle: {
+        backgroundColor: '#FF9800',
+      },
+      headerTintColor: '#fff',
+    }),
+  },
+});
+
+
 const AuthStack = createStackNavigator({ LoginPage: Login, SignUpPage: SignUp });
 
 const AuthLoadingScreen = createStackNavigator({LoadingPage:Loading});
@@ -128,6 +144,13 @@ const DrawerNavigator = createDrawerNavigator({
     screen: SecondDrawerNav,
     navigationOptions: {
       drawerLabel: 'Contact Us :)',
+    },
+  },
+  Screen5: {
+    //Title
+    screen: FifthDrawerNav,
+    navigationOptions: {
+      drawerLabel: 'Location :)',
     },
   },
 });
