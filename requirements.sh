@@ -21,5 +21,5 @@ sudo npm install -save react-native-vector-icons
 sudo npm install react-navigation-drawer
 sudo npm install react-native-safe-area-view
 sudo npm install react-native-maps --save-exact
-sduo npm install react-native-safe-area-context
+sudo npm install react-native-safe-area-context
 sudo react-native link react-native-safe-area-context

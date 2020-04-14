@@ -14,8 +14,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.Arrays;
 import java.util.List;
-import com.airbnb.android.react.maps.MapsPackage;
 import com.swmansion.reanimated.ReanimatedPackage;
+import com.airbnb.android.react.maps.MapsPackage;
 public class MainApplication extends Application implements ReactApplication {
 
   private final ReactNativeHost mReactNativeHost =
@@ -29,10 +29,10 @@ public class MainApplication extends Application implements ReactApplication {
         protected List<ReactPackage> getPackages() {
           return Arrays.<ReactPackage>asList(
             new MainReactPackage(),
-            new MapsPackage(),
             new SafeAreaContextPackage(),
             new RNGestureHandlerPackage(),
-            new ReanimatedPackage()
+            new ReanimatedPackage(),
+            new MapsPackage()
           );
         }
         @Override
