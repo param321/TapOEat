@@ -23,7 +23,7 @@
     "react-native-datepicker": "^1.7.2",
     "react-native-floating-action": "^1.20.0",
     "react-native-gesture-handler": "^1.6.1",
-    "react-native-maps": "https://github.com/react-community/react-native-maps.git",
+    "react-native-maps": "^0.27.0",
     "react-native-reanimated": "^1.8.0",
     "react-native-safe-area-context": "^0.7.3",
     "react-native-safe-area-view": "^1.0.0",
