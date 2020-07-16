@@ -4,17 +4,11 @@ import { Alert, Platform, Image, View, Text, StyleSheet, Button } from 'react-na
 export default class Main extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { currentUser: null, errorMessage: null }
+    this.state = { currentUser: null }
   }
   componentDidMount() {
     const { currentUser } = firebaseAuth;
     this.setState({ currentUser })
-  }
-  onPressButton = () => {
-    console.log('PressButton');
-    firebaseAuth.signOut()
-      .then(() => this.props.navigation.navigate('Auth'))
-      .catch(error => this.setState({ errorMessage: error.message }));
   }
   render() {
     const { currentUser } = this.state
@@ -22,13 +16,7 @@ export default class Main extends React.Component {
       <View style={styles.container}>
         <Text>
           Hi {currentUser && currentUser.email}!
-    </Text>
-        <View>
-          <Button
-            onPress={this.onPressButton}
-            title="Sign Out"
-          />
-        </View>
+        </Text>
       </View>
     )
   }

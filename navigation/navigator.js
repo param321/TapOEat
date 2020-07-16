@@ -11,6 +11,7 @@ import Loading from '../Screens/Auth/Loading';
 import profile from '../Screens/Profile/profile';
 import Order from '../Screens/Orders/orders';
 import locationScreen from '../components/location';
+import signOut from '../components/signOut'
 export const Navigator = () => (
   <AppContainer />
 );
@@ -96,20 +97,20 @@ const FourthDrawerNav = createStackNavigator({
   },
 });
 
-// const FifthDrawerNav = createStackNavigator({
-//   //All the screen from the Screen2 will be indexed here
-//   Fifth: {
-//     screen: locationScreen,
-//     navigationOptions: ({ navigation }) => ({
-//       title: 'locationScreen',
-//       headerLeft: () => (<NavigationDrawerStructure navigationProps={navigation} />),
-//       headerStyle: {
-//         backgroundColor: '#FF9800',
-//       },
-//       headerTintColor: '#fff',
-//     }),
-//   },
-// });
+const FifthDrawerNav = createStackNavigator({
+  //All the screen from the Screen2 will be indexed here
+  Fifth: {
+    screen: signOut,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Sign Out',
+      headerLeft: () => (<NavigationDrawerStructure navigationProps={navigation} />),
+      headerStyle: {
+        backgroundColor: '#FF9800',
+      },
+      headerTintColor: '#fff',
+    }),
+  },
+});
 
 
 const AuthStack = createStackNavigator({ LoginPage: Login, SignUpPage: SignUp });
@@ -127,32 +128,32 @@ const DrawerNavigator = createDrawerNavigator({
   },
   Screen2: {
     //Title
-    screen: ThirdDrawerNav,
+    screen: SecondDrawerNav,
     navigationOptions: {
       drawerLabel: 'Orders :)',
     },
   },
   Screen3: {
     //Title
-    screen: FourthDrawerNav,
+    screen: ThirdDrawerNav,
     navigationOptions: {
       drawerLabel: 'Profile :)',
     },
   },
   Screen4: {
     //Title
-    screen: SecondDrawerNav,
+    screen: FourthDrawerNav,
     navigationOptions: {
       drawerLabel: 'About Us :)',
     },
   },
-  // Screen5: {
-  //   //Title
-  //   screen: FifthDrawerNav,
-  //   navigationOptions: {
-  //     drawerLabel: 'Location :)',
-  //   },
-  // },
+  Screen5: {
+    //Title
+    screen: FifthDrawerNav,
+    navigationOptions: {
+      drawerLabel: 'Sign Out :)',
+    },
+  },
 });
 
 const AppContainer = createAppContainer(
