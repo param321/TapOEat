@@ -4,13 +4,13 @@ import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createStackNavigator } from 'react-navigation-stack';
 import Home from '../Screens/Home/home';
-import Contact from '../Screens/Contacts Us/contact';
+import aboutUs from '../Screens/About Us/aboutUs';
 import Login from '../Screens/Auth/login';
 import SignUp from '../Screens/Auth/Signup';
 import Loading from '../Screens/Auth/Loading';
-import Account from '../Screens/Account/account';
+import profile from '../Screens/Profile/profile';
 import Order from '../Screens/Orders/orders';
-import locationScreen from '../Screens/location';
+import locationScreen from '../components/location';
 export const Navigator = () => (
   <AppContainer />
 );
@@ -54,21 +54,6 @@ const FirstDrawerNav = createStackNavigator({
 const SecondDrawerNav = createStackNavigator({
   //All the screen from the Screen2 will be indexed here
   Second: {
-    screen: Contact,
-    navigationOptions: ({ navigation }) => ({
-      title: 'Contact Us',
-      headerLeft: () => (<NavigationDrawerStructure navigationProps={navigation} />),
-      headerStyle: {
-        backgroundColor: '#FF9800',
-      },
-      headerTintColor: '#fff',
-    }),
-  },
-});
-
-const ThirdDrawerNav = createStackNavigator({
-  //All the screen from the Screen2 will be indexed here
-  Third: {
     screen: Order,
     navigationOptions: ({ navigation }) => ({
       title: 'Orders',
@@ -81,12 +66,12 @@ const ThirdDrawerNav = createStackNavigator({
   },
 });
 
-const FourthDrawerNav = createStackNavigator({
+const ThirdDrawerNav = createStackNavigator({
   //All the screen from the Screen2 will be indexed here
-  Fourth: {
-    screen: Account,
+  Third: {
+    screen: profile,
     navigationOptions: ({ navigation }) => ({
-      title: 'Account',
+      title: 'Profile',
       headerLeft: () => (<NavigationDrawerStructure navigationProps={navigation} />),
       headerStyle: {
         backgroundColor: '#FF9800',
@@ -96,12 +81,12 @@ const FourthDrawerNav = createStackNavigator({
   },
 });
 
-const FifthDrawerNav = createStackNavigator({
+const FourthDrawerNav = createStackNavigator({
   //All the screen from the Screen2 will be indexed here
-  Fifth: {
-    screen: locationScreen,
+  Fourth: {
+    screen: aboutUs,
     navigationOptions: ({ navigation }) => ({
-      title: 'locationScreen',
+      title: 'About Us',
       headerLeft: () => (<NavigationDrawerStructure navigationProps={navigation} />),
       headerStyle: {
         backgroundColor: '#FF9800',
@@ -110,6 +95,21 @@ const FifthDrawerNav = createStackNavigator({
     }),
   },
 });
+
+// const FifthDrawerNav = createStackNavigator({
+//   //All the screen from the Screen2 will be indexed here
+//   Fifth: {
+//     screen: locationScreen,
+//     navigationOptions: ({ navigation }) => ({
+//       title: 'locationScreen',
+//       headerLeft: () => (<NavigationDrawerStructure navigationProps={navigation} />),
+//       headerStyle: {
+//         backgroundColor: '#FF9800',
+//       },
+//       headerTintColor: '#fff',
+//     }),
+//   },
+// });
 
 
 const AuthStack = createStackNavigator({ LoginPage: Login, SignUpPage: SignUp });
@@ -136,23 +136,23 @@ const DrawerNavigator = createDrawerNavigator({
     //Title
     screen: FourthDrawerNav,
     navigationOptions: {
-      drawerLabel: 'Account :)',
+      drawerLabel: 'Profile :)',
     },
   },
   Screen4: {
     //Title
     screen: SecondDrawerNav,
     navigationOptions: {
-      drawerLabel: 'Contact Us :)',
+      drawerLabel: 'About Us :)',
     },
   },
-  Screen5: {
-    //Title
-    screen: FifthDrawerNav,
-    navigationOptions: {
-      drawerLabel: 'Location :)',
-    },
-  },
+  // Screen5: {
+  //   //Title
+  //   screen: FifthDrawerNav,
+  //   navigationOptions: {
+  //     drawerLabel: 'Location :)',
+  //   },
+  // },
 });
 
 const AppContainer = createAppContainer(
